@@ -1,0 +1,20 @@
+{
+  "name": "femike/yii2-schedule-week-time-select",
+  "description": "Schedule Week Time Select",
+  "keywords": ["yii2", "extension", "widget", "form", "jquery", "plugin"],
+  "homepage": "https://github.com/femike/yii2-schedule-week-time-select",
+  "type": "yii2-extension",
+  "license": "BSD 3-Clause",
+  "authors": [
+    {
+      "name": "Samokhvalov Mikhail",
+      "email": "femike@mail.ru",
+      "homepage": "https://github.com/femike"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "femike\\widgets\\": ""
+    }
+  }
+}

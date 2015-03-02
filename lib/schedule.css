@@ -1,0 +1,31 @@
+td.time,
+td.weekday,
+#schedule-week-time td.selected {
+	background-color: #5CB85C !important;
+}
+
+#schedule-week-time td {
+	width: 32px;
+	height: 32px;
+	vertical-align: middle;
+	text-align: center;
+	background-color: #94BF94;
+	border: 2px solid #fff;
+	color: #fff;
+	cursor: pointer;
+}
+
+td.weekday {
+	font-weight: bold;
+}
+
+td.time,
+td.weekday {
+	padding: 4px;
+}
+
+td.time {
+	font-size: 10px;
+	font-family: "Courier New", Courier, monospace;
+	cursor: auto;
+}
