@@ -9,7 +9,7 @@ td.weekday,
 	height: 32px;
 	vertical-align: middle;
 	text-align: center;
-	background-color: #94BF94;
+	background-color: #BAD8BA;
 	border: 2px solid #fff;
 	color: #fff;
 	cursor: pointer;
@@ -28,4 +28,12 @@ td.time {
 	font-size: 10px;
 	font-family: "Courier New", Courier, monospace;
 	cursor: auto;
+}
+
+#schedule-buttons {
+	padding-bottom: 10px;
+}
+
+#schedule-buttons a {
+	padding: 4px 20px 4px 4px;
 }

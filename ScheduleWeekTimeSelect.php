@@ -57,7 +57,26 @@ class ScheduleWeekTimeSelect extends Widget
 		endfor;
 		$data .= Html::endTag('tr');
 
-		return Html::tag('table', $data, ['id' => 'schedule-week-time']);
+		$return = Html::tag('div', '', ['class' => 'clearfix']);
+		$return .= $this->renderButtons();
+		$return .= Html::tag('div', Html::tag('table', $data, ['id' => 'schedule-week-time']), ['class' => 'col-sm-10']);
+		unset($data);
+
+		return $return;
+	}
+
+	private function renderButtons()
+	{
+		$data = Html::beginTag('div', ['class' => 'col-sm-12', 'id' => 'schedule-buttons']);
+
+		$data .= Html::a('Круглосуточно', '#schedule-week-time', ['id' => 'around-the-clock']);
+		$data .= Html::a('Будни', '#schedule-week-time', ['id' => 'weekdays']);
+		$data .= Html::a('Рабочее время', '#schedule-week-time', ['id' => 'working-hours']);
+		$data .= Html::a('Выходные', '#schedule-week-time', ['id' => 'weekend']);
+
+		$data .= Html::endTag('div');
+
+		return $data;
 	}
 
 	public function run()
