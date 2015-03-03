@@ -11,11 +11,21 @@ class ScheduleWeekTimeSelect extends Widget
 	public $attribute;
 	public $options;
 
+	public function init()
+	{
+		if (empty($this->options['id'])) {
+			$this->options['id'] = Html::getInputId($this->model, $this->attribute);
+		}
+	}
+
 	public function renderTime($day, $data, $options = [])
 	{
 		$return = '';
 		for ($i = 0; $i < 24; $i++) {
-			$return .= Html::tag('td', $data, array_merge(['data' => ['time' => $i, 'day' => $day]], $options));
+			$return .= Html::tag('td', $data, array_merge([
+				'class' => 'schedule',
+				'data' => ['time' => $i, 'day' => $day, 'value' => $day . '_' . $i]
+			], $options));
 		}
 
 		return $return;
@@ -29,8 +39,8 @@ class ScheduleWeekTimeSelect extends Widget
 		$data = '';
 
 		if ($this->model && $this->attribute) {
-			$options = $this->options ?: [];
-			$data = Html::input('hidden', $this->attribute, $this->model->getAttribute($this->attribute), $options);
+			$options = isset($this->options['inputOptions']) ? $this->options['inputOptions'] : [];
+			$data = Html::activeInput('hidden', $this->model, $this->attribute, $options);
 		}
 
 		for ($i = 0; $i < 7; $i++) {
@@ -53,15 +63,22 @@ class ScheduleWeekTimeSelect extends Widget
 	public function run()
 	{
 		$this->registerAssets();
+
 		return $this->renderTable();
 	}
 
-	protected function registerAssetBundle() {
+	protected function registerAssetBundle()
+	{
 		ScheduleWeekTimeAsset::register($this->getView());
 	}
 
 	public function registerAssets()
 	{
+		$view = $this->getView();
+		$js = 'jQuery("#schedule-week-time").data({attribute: "#' . $this->options['id'] . '"});';
+		$view->registerJs($js);
+		$js = 'jQuery("#' . $this->options['id'] . '").shchedule().setSelection();';
+		$view->registerJs($js);
 		$this->registerAssetBundle();
 	}
 }
